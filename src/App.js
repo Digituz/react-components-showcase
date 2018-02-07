@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Input from '@digituz/react-input';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.onInputChange = this.onInputChange.bind(this);
+    this.state = {
+      inputValue: 'Hello, world!'
+    };
+  }
+
+  onInputChange(event) {
+    const inputValue = event.target.value;
+    this.setState({
+      inputValue,
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <h1>React Component Showcase</h1>
+        <Input onChange={this.onInputChange} value={this.state.inputValue}/>
       </div>
     );
   }
